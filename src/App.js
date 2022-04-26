@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import JsonFile from "./movies-netflix.json";
 import './App.css';
+import Section from "./components/Section";
+import logo from "./img/logo.png";
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img id= "logo" alt="logo" src= {logo}/>
+      {JsonFile.map((categories, index) =>{
+          const arrayPic = JsonFile[index].images;
+          return <Section key={index} title = {categories.category} img={arrayPic}/>
+      })}
     </div>
   );
 }
